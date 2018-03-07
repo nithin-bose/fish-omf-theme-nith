@@ -1,32 +1,22 @@
-# name: Jacaetevha
-function tbytes -d 'calculates the total size of the files in the current directory'
-  set -l tBytes (ls -al | grep "^-" | awk 'BEGIN {i=0} { i += $5 } END { print i }')
-  
-  if test $tBytes -lt 1048576
-    set -g total (echo -e "scale=3 \n$tBytes/1048 \nquit" | bc)
-    set -g units " Kb"
-  else
-    set -g total (echo -e "scale=3 \n$tBytes/1048576 \nquit" | bc)
-    set -g units " Mb"
-  end
-  echo -n "$total$units"
-end
-
+# name: Nithin
 function fish_prompt
-  set_color yellow
+  set -l purple af5fff
+  set -l orange d75f00
+  set -l limegreen 87ff00
+
+  set_color $purple
   printf '%s' (whoami)
   set_color normal
   printf ' at '
 
-  set_color magenta
+  set_color $orange
   printf '%s' (hostname|cut -d . -f 1)
   set_color normal
   printf ' in '
 
-  set_color $fish_color_cwd
-  printf '%s ' (prompt_pwd)
-  set_color blue
-  printf '%s' (tbytes)
+  set_color $limegreen
+  set -g fish_prompt_pwd_dir_length 0
+  printf '%s' (prompt_pwd)
   set_color normal
   printf '%s' (__fish_git_prompt)
 
@@ -35,7 +25,7 @@ function fish_prompt
   if test $VIRTUAL_ENV
       printf "(%s) " (set_color blue)(basename $VIRTUAL_ENV)(set_color normal)
   end
-  printf '↪  '
+  printf '$ '
   set_color normal
 end
 
