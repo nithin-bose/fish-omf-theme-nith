@@ -4,6 +4,7 @@ function fish_prompt
   set -l orange d75f00
   set -l limegreen 87ff00
 
+  echo ""
   set_color $purple
   printf '%s' (whoami)
   set_color normal
