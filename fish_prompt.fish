@@ -9,7 +9,6 @@ function _is_git_dirty
 end
 
 function _git_prompt
-  set_color 
   if [ (_git_branch_name) ]
     set -l git_branch (_git_branch_name)
 
