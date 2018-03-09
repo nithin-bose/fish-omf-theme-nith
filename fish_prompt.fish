@@ -17,7 +17,7 @@ function _git_prompt
     else
       set git_info (set_color $turquoise) $git_branch
     end
-    echo -n -s $git_info (set_color normal)
+    echo -n -s " (" $git_info (set_color normal) ")"
   end
 end
 
@@ -44,7 +44,8 @@ function fish_prompt
   set_color normal
 
   # Git prompt setup
-  printf ' (%s)' (_git_prompt)
+  printf '%s' (_git_prompt)
+  set_color normal
 
   # Line 2
   echo
