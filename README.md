@@ -11,5 +11,5 @@ omf update
 
 2. Install the theme using
 ```
-omf theme nith
+omf install nith
 ```
